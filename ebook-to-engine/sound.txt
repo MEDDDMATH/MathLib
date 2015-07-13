@@ -1,0 +1,48 @@
+	div[name='div_pic']{
+		cursor:pointer;
+	}
+	.show_pic{
+		border:0px;
+		font-size:18px;
+		font-family:"Trebuchet MS", sans-serif;
+		display:none;
+	}
+	.share_cs{
+		position:absolute;
+		z-index:10;
+		width: 237px;
+	}
+	.pic_btn{
+		cursor:pointer;
+		background:url(img/ICON_PLAY.png);
+		background-repeat:no-repeat;
+		border:0px;
+	}
+	
+	var aud_data=[];
+	var pic_data=[];
+	var div_data=[];
+	function initData(){
+		aud_data =document.getElementsByName("aud_ea");
+		pic_data = document.getElementsByName("div_pic");
+		div_data= document.getElementsByName("div_show");
+		for(var i=0;i<pic_data.length;i++){
+			pic_data[i].pic =i;
+			pic_data[i].onclick = play;
+			}
+		for(var i=0;i<div_data.length;i++){
+			div_data[i].style.display ="none";
+			}
+		function play(){
+			var num = this.pic;
+			if(div_data[num].style.display == "none"){
+				 aud_data[num].play();
+				 div_data[num].style.display ="block";
+				}
+			else{
+				aud_data[num].pause();
+				aud_data[num].load();
+				div_data[num].style.display ="none";
+				}
+			}
+	}
